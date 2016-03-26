@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title> <%= title %> </title>
+
+    <style type="text/css">
+        html, body{
+            margin: 0;
+            padding: 0;
+        }
+        .pane{
+            position: relative;
+            float: left;
+            height: 100vh;
+        }
+
+        .players{
+            width: 40%;
+            background-color: blue;
+        }
+
+        .pane.team{
+            width: 30%;
+            background-color: red;
+        }
+
+        .teamNames{
+            width: 100%;
+            height: 15%;
+            background-color: green;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 200%;
+        }
+
+        #addSection{
+            width: 100%;
+            height: 15%;
+            background-color: orange;
+        }
+
+        #addSection button{
+
+        }
+
+        #radio{
+            position: relative;
+            left: 50%;
+            top: 50%;
+        }
+
+    </style>
+</head>
+<body>
+<div class="pane team">
+    <div class="teamNames">Team 1</div>
+</div>
+
+<div class="pane players">
+    <div id="addSection">
+        <form action="addPlayer" >
+            <input id="radio" type="radio" name="position" value="Forward">Forward<br>
+            <input id="radio" type="radio" name="position" value="Defense">Defender<br>
+            <input id="radio" type="radio" name="position" value="Goalie">Goalie<br>
+            <input type="text" placeholder="Enter Player Name">
+            <button>Add Player</button>
+        </form>
+    </div>
+    <div id="playerPool">
+    </div>
+</div>
+
+<div class="pane team">
+    <div class="teamNames">Team 2</div>
+</div>
+</body>
+</html>
