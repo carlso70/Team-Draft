@@ -41,29 +41,27 @@
             background-color: orange;
         }
 
-        #addSection button{
 
+        .teamsPool{
+            background-color: yellow;
+            height: 85%;
+            width: 100%;
+            border: 5px red;
         }
-
-        #radio{
-            position: relative;
-            left: 50%;
-            top: 50%;
-        }
-
     </style>
 </head>
 <body>
 <div class="pane team">
     <div class="teamNames">Team 1</div>
+    <div class="teamsPool"></div>
 </div>
 
 <div class="pane players">
     <div id="addSection">
         <form action="addPlayer" >
-            <input id="radio" type="radio" name="position" value="Forward">Forward<br>
-            <input id="radio" type="radio" name="position" value="Defense">Defender<br>
-            <input id="radio" type="radio" name="position" value="Goalie">Goalie<br>
+            <input type="radio" name="position" value="Forward">Forward<br>
+            <input type="radio" name="position" value="Defense">Defender<br>
+            <input type="radio" name="position" value="Goalie">Goalie<br>
             <input type="text" placeholder="Enter Player Name">
             <button>Add Player</button>
         </form>
@@ -74,6 +72,11 @@
 
 <div class="pane team">
     <div class="teamNames">Team 2</div>
+    <div class="teamsPool">
+        <% for(var i = 0; players[i] != null; i++) {%>
+            <p> <%= players[i] %></p><br>
+        <% }%>
+    </div>
 </div>
 </body>
 </html>

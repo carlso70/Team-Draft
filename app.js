@@ -1,7 +1,22 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+
+//mongo setup
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('localhost:27017/players');
+
+
+//view engine setup
 app.set('view engine', 'ejs');
+
+/*
+app.use(function(req, res, next){
+  req.db = db;
+    next();
+});
+*/
 
 //todo setup mongo and players database
 //todo set up draggable jquery ui for players
@@ -9,8 +24,13 @@ app.set('view engine', 'ejs');
 //todo add post functions for once add players, also create checks for if valid name and data
 
 app.get('/', function (req, res) {
-    res.render(__dirname + "/index", {
-        title: 'Draft'
+    db = req.db;
+    var collection = db.get('players');
+    collection.find({},{}, function(e, docs) {
+        res.render(__dirname + "/index", {
+            "title": 'Draft.io',
+            "players": docs
+        });
     });
 });
 
